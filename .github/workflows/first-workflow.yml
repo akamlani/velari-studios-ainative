@@ -20,9 +20,9 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name:  Second Job Script
-        shell: sh
+        shell: bash
         run:   |
-          This is the Second Job Script
-          This is a Multi-line Script
+          echo This is the Second Job Script
+          echo This is a Multi-line Script
 
   
