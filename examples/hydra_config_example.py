@@ -1,5 +1,4 @@
 """Example demonstrating Hydra configuration loading."""
-
 import hydra
 from omegaconf import DictConfig, OmegaConf
 
