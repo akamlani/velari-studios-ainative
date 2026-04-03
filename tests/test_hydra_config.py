@@ -1,6 +1,5 @@
 """Tests for Hydra configuration loading."""
 from pathlib import Path
-
 from omegaconf import OmegaConf
 
 
