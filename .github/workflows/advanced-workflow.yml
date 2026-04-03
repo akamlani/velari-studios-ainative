@@ -16,6 +16,16 @@ jobs:
       # checkout from target branch
       - name: Checkout Action
         uses: actions/checkout@v6
+      # from javascript hello world action
+      - name: Print to Log
+        id: print-to-log
+        uses: actions/hello-world-javascript-action@main
+        with:
+          who-to-greet: ${{ github.actor }}
+      - name: time
+        run: |
+            echo "The time of the greeting was ${{ steps.print-to-log.outputs.time }}"
+
 
 
   second_job:
