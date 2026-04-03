@@ -1,12 +1,11 @@
 """velari package — sets up logging from config/logging.yaml."""
-
 import logging
 import logging.config
 from pathlib import Path
 
 import yaml
 
-from velari.version import __version__
+from .version import __version__
 
 _CONFIG_PATH = Path(__file__).parent.parent / "config" / "logging.yaml"
 _LOG_DIR = Path(__file__).parent.parent / "logs"
@@ -14,13 +13,24 @@ _LOG_DIR = Path(__file__).parent.parent / "logs"
 
 def _setup_logging(config_path: Path = _CONFIG_PATH) -> None:
     _LOG_DIR.mkdir(exist_ok=True)
-    with open(config_path) as f:
-        config = yaml.safe_load(f)
-    logging.config.dictConfig(config)
+    if config_path.exists():
+        with open(config_path) as f:
+            cfg = yaml.safe_load(f)
+        # Remove rich handler if rich is not installed
+        try:
+            import rich  # noqa: F401
+        except ImportError:
+            root_handlers: list = cfg.get("root", {}).get("handlers", [])
+            if "console_rich_handler" in root_handlers:
+                root_handlers.remove("console_rich_handler")
+                cfg.setdefault("root", {})["handlers"] = root_handlers
+            cfg.get("handlers", {}).pop("console_rich_handler", None)
+        logging.config.dictConfig(cfg)
+    else:
+        logging.basicConfig(level=logging.INFO)
 
 
 _setup_logging()
-
 logger = logging.getLogger(__name__)
 
 __all__ = ["__version__", "logger"]
