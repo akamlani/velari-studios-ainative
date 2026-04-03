@@ -10,6 +10,8 @@ keywords        = ["ai", "experiments", "incubation", "innovation"]
 dependencies    = [
     "hydra-core>=1.3",
     "omegaconf>=2.3",
+    "pyyaml>=6.0",
+    "rich>=13.0",
 ]
 
 [dependency-groups]
