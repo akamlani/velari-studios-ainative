@@ -54,6 +54,7 @@ info_dotfiles:
 install:
 	@echo "Installing package $(PACKAGE_INSTALL_NAME) for development..."
 	$(MAKE) install_dotfiles
+	$(MAKE) link_vaultspace
 
 install_setup:
 	@echo "Installing Setup for $(PACKAGE_NAME)..."
