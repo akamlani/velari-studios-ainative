@@ -60,7 +60,7 @@ install:
 install_setup:
 	@echo "Installing Setup for $(PACKAGE_NAME)..."
 	mkdir -p .velari
-	mkdir -p _build config docs
+	mkdir -p _build config docs templates projects
 #	mkdir -p _build config data docs scripts apps projects examples templates
 	touch .env.template
 	touch docs/.gitkeep
@@ -173,6 +173,8 @@ install_agents:
 	$(MAKE) setup_agent_claude
 	$(MAKE) install_local_skills
 	$(MAKE) -C $(SKILLS_DIR) install_plugin_local PROJECT_DIR=$(GIT_ROOT)
+	$(MAKE) -C $(SKILLS_DIR) install_marketplace_claude
+	$(MAKE) -C $(SKILLS_DIR) install_plugin_claude PROJECT_DIR=$(GIT_ROOT)
 
 install_local_skills:
 	@echo "Installing agent-skills from $(SKILLS_REPO)..."
