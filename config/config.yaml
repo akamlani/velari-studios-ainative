@@ -1,6 +1,6 @@
 defaults:
+  - experimentation: experiment
   - _self_
 
-logging:
-  level: INFO
-  format: "%(asctime)s - %(name)s - %(levelname)s - %(message)s"
+# top level configuration
+logging: logging.yaml
