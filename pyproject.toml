@@ -9,6 +9,12 @@ license         = {text = "Apache-2.0"}
 keywords        = ["ai", "experiments", "incubation", "innovation"]
 
 
+[project]
+dependencies = [
+    "hydra-core>=1.3",
+    "omegaconf>=2.3",
+]
+
 [dependency-groups]
 dev = [
     "ipykernel>=6.0",
