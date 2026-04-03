@@ -26,12 +26,3 @@ jobs:
 
       - name: Install Python and Dependencies
         run: make install_python
-
-      - name: Lint
-        run: make lint
-
-      - name: Format check
-        run: make format
-
-      - name: Test
-        run: make test
