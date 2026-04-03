@@ -59,6 +59,9 @@ install_dotfiles:
 	@echo "Installing Dotfiles from $(DOTFILES_REPO)..."
 	@if [ ! -d $(DOTFILES_DIR) ]; then \
 		git clone $(DOTFILES_REPO) $(DOTFILES_DIR); \
+	else \
+		echo "Updating Dotfiles..."; \
+		git -C $(DOTFILES_DIR) pull --ff-only; \
 	fi
 	$(MAKE) link_dotfiles
 
@@ -66,10 +69,10 @@ install_dotfiles:
 link_dotfiles:
 	@echo "Linking Dotfiles..."
 	@for dir in .vscode .github; do \
-		mkdir -p $$dir; \
+		mkdir -p $(GIT_ROOT)/$$dir; \
 		find $(GIT_ROOT)/$(DOTFILES_DIR)/$$dir -maxdepth 1 -mindepth 1 | \
 		while read src; do \
-			dest="$$dir/$$(basename $$src)"; \
+			dest="$(GIT_ROOT)/$$dir/$$(basename $$src)"; \
 			{ [ -d "$$dest" ] && ! [ -L "$$dest" ]; } || ln -sfn "$$src" "$$dest"; \
 		done; \
 	done

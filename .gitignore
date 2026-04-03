@@ -4,8 +4,8 @@ outputs/
 logs/
 stores/
 # for dotfiles
-.vscode
-.vscode/
+# .vscode
+# .vscode/
 # .github
 # .github/
 # Environment
