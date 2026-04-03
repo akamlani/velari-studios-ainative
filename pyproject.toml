@@ -1,5 +1,5 @@
 [project]
-name            = "velari-github-workflows"
+name = "velari-github-workflows"
 authors         = [{name = "Ari Kamlani", email = "akamlani@gmail.com"}]
 description     = "Add your description here"
 version         = "0.1.0"
@@ -7,14 +7,7 @@ requires-python = ">=3.12"
 readme          = "README.md"
 license         = {text = "Apache-2.0"}
 keywords        = ["ai", "experiments", "incubation", "innovation"]
-dependencies = [
-    "hydra-core>=1.3",
-    "omegaconf>=2.3",
-]
-
-
-[project]
-dependencies = [
+dependencies    = [
     "hydra-core>=1.3",
     "omegaconf>=2.3",
 ]

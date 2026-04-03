@@ -158,7 +158,8 @@ test:
 
 clean_python:
 	@echo "Cleaning Python artifacts for $(PACKAGE_INSTALL_NAME)..."
-	rm -rf $(PYTHON_VENV_DIR) .pytest_cache dist
+#	rm -rf $(PYTHON_VENV_DIR)
+	rm -rf .pytest_cache dist
 	find . -not -path './.git/*' -type d -name "__pycache__" -exec rm -rf {} +
 	find . -not -path './.git/*' -type f -name "*.pyc" -delete
 
@@ -199,7 +200,20 @@ setup_agent_claude:
 	touch .claude/settings.json
 	touch .claude/settings.local.json
 
+#################### Development CLIs
+.PHONY: install_cli
 
+install_cli:
+	@echo "Installing CLIs for Development..."
+# gitub copilot
+	npm install -g @github/copilot
+	copilot update
+	@echo "Github Copilot Version: $$(copilot --version)"
+# github agentic workflows
+	gh extension install github/gh-aw
+	gh extension upgrade aw
+	@echo "Github Agentic Workflow Version: $$(gh aw --version)"
+	gh aw add githubnext/agentics/daily-repo-status
 
 
 #################### General
