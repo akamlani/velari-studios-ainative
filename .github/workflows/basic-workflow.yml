@@ -1,7 +1,7 @@
 name: Advanced Workflow
 
 
-env: 
+env:
   WORKFLOW_VAR: "This Variable is declared at at the workflow level"
 
 # triggers for the workflow, branches to apply workflow
@@ -9,11 +9,13 @@ env:
 on:
   workflow_dispatch:
 
+# runner to execute commands, run workflow jobs (github hosted or self hosted)
+# actions: prebuilt commands that can be used in the workflow (checkout runtime, publish artifacts)
 jobs:
   first_job:
     # define runner with 'runs-on'
     runs-on: ubuntu-latest
-    env: 
+    env:
       JOB_VAR: "This Variable is declared at the job level"
     steps:
       - name:  First Job Script
@@ -43,12 +45,10 @@ jobs:
           echo This is the Second Job Script
           echo This is a Multi-line Script
       - name:  Environment Variables
-        env: 
+        env:
           STEP_VAR: "This Variable is declared at the step level"
         run:   |
           echo "This is the WORKFLOW_VAR:   $WORKFLOW_VAR"
           echo "This is the JOB_VAR:        $JOB_VAR"
           echo "This is the STEP_VAR:       $STEP_VAR"
           echo "This is the GITHUB_ACTOR:   $GITHUB_ACTOR $GITHUB_JOB $GITHUB_REF $GITHUB_RUN_ID"
-
-  

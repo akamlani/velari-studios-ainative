@@ -11,6 +11,7 @@ jobs:
   python_ci:
     runs-on: ubuntu-latest
     steps:
+      # checkout from target branch
       - name: Checkout
         uses: actions/checkout@v6
 
@@ -21,5 +22,6 @@ jobs:
           version:      "0.11.3"
           enable-cache: true
 
+      # set up python runtime
       - name: Install Python and Dependencies
         run: make install_python

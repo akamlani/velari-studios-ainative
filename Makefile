@@ -55,6 +55,14 @@ install:
 	@echo "Installing package $(PACKAGE_INSTALL_NAME) for development..."
 	$(MAKE) install_dotfiles
 
+install_setup:
+	@echo "Installing Setup for $(PACKAGE_NAME)..."
+	mkdir -p .velari
+	mkdir -p _build config docs
+#	mkdir -p _build config data docs scripts apps projects examples templates
+	touch .env.template
+	touch docs/.gitkeep
+
 install_dotfiles:
 	@echo "Installing Dotfiles from $(DOTFILES_REPO)..."
 	@if [ ! -d $(DOTFILES_DIR) ]; then \
@@ -76,6 +84,14 @@ link_dotfiles:
 			{ [ -d "$$dest" ] && ! [ -L "$$dest" ]; } || ln -sfn "$$src" "$$dest"; \
 		done; \
 	done
+
+# links to obsidian vaults for contextlib, artifactlib, promptlib
+link_vaultspace:
+	@echo "Linking Vaultspace..."
+	mkdir -p stores
+	ln -sfn $(VAULTSPACE_ROOT)/contextlib 	stores/contextlib
+	ln -sfn $(VAULTSPACE_ROOT)/artifactlib 	stores/artifactlib
+	ln -sfn $(VAULTSPACE_ROOT)/promptlib 	stores/promptlib
 
 
 #################### Python / uv
@@ -143,6 +159,44 @@ clean_python:
 	rm -rf $(PYTHON_VENV_DIR) .pytest_cache dist
 	find . -not -path './.git/*' -type d -name "__pycache__" -exec rm -rf {} +
 	find . -not -path './.git/*' -type f -name "*.pyc" -delete
+
+
+#################### Minimal Agents and Skills
+.PHONY: setup_agent setup_agent_claude
+.PHONY: install_agents install_local_skills
+
+install_agents:
+	@echo "Installing agents setup..."
+	$(MAKE) setup_agent
+	$(MAKE) setup_agent_claude
+	$(MAKE) install_local_skills
+	$(MAKE) -C $(SKILLS_DIR) install_plugin_local PROJECT_DIR=$(GIT_ROOT)
+
+install_local_skills:
+	@echo "Installing agent-skills from $(SKILLS_REPO)..."
+	@if [ ! -d $(SKILLS_DIR) ]; then \
+		git clone $(SKILLS_REPO) $(SKILLS_DIR); \
+	fi
+
+setup_agent:
+	@echo "Installing agents setup..."
+# General setup
+	mkdir -p .agents
+	touch AGENTS.md
+
+setup_agent_claude:
+	@echo "Installing Claude Coding Agent..."
+# repopulate claude directories
+	mkdir -p .claude
+	mkdir -p .claude-plugin
+	touch CLAUDE.md
+	echo @AGENTS.md > CLAUDE.md
+	touch .claude/CLAUDE.md
+	touch .claude/settings.json
+	touch .claude/settings.local.json
+
+
+
 
 #################### General
 .PHONY: clean
