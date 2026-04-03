@@ -76,7 +76,7 @@ link_dotfiles:
 
 
 #################### Python / uv
-.PHONY: uv_download conda_config uv_download
+.PHONY: conda_config uv_download download_python
 .PHONY: install_python uv_sync_project_name format lint test clean_python
 
 download_python:
