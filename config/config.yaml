@@ -1,0 +1,30 @@
+# @package _global_
+
+# Hydra configuration root for velari-github-workflows
+# Use `python -m <module> --config-path config --config-name config` to load.
+
+defaults:
+  - _self_
+
+project:
+  name: velari-github-workflows
+  package: velari
+  version: "0.1.0"
+
+python:
+  version: "3.12"
+  venv: .venv
+
+runtime:
+  branch: main
+  platform: linux
+
+workflows:
+  ci:
+    runner: ubuntu-latest
+    python_version: "3.12"
+    uv_version: "0.5.0"
+  agentic:
+    engine: copilot
+    timeout_minutes: 20
+    runner: ubuntu-latest

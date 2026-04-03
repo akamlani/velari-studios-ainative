@@ -23,7 +23,7 @@ jobs:
         run:   echo Hello World!  This is the first Job.
       # checkout from target branch
       - name: Checkout Action
-        uses: actions/checkout@v6
+        uses: actions/checkout@v4
       # from javascript hello world action
       - name: Print to Log
         id: print-to-log

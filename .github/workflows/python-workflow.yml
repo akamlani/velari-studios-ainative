@@ -13,13 +13,13 @@ jobs:
     steps:
       # checkout from target branch
       - name: Checkout
-        uses: actions/checkout@v6
+        uses: actions/checkout@v4
 
       - name: Set up uv
         uses: astral-sh/setup-uv@v7
         # install specific version of uv and enable caching for faster installs in future runs
         with:
-          version:      "0.11.3"
+          version:      "0.5.0"
           enable-cache: true
 
       # set up python runtime
