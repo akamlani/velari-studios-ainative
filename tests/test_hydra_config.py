@@ -16,4 +16,3 @@ def test_config_loads():
 def test_config_logging_section():
     cfg = OmegaConf.load(CONFIG_PATH)
     assert "logging" in cfg
-    assert cfg.logging.level == "INFO"

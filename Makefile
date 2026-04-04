@@ -59,7 +59,7 @@ install:
 
 install_setup:
 	@echo "Installing Setup for $(PACKAGE_NAME)..."
-	mkdir -p .velari
+	mkdir -p .$(PACKAGE_NAME)
 	mkdir -p _build config docs templates projects
 #	mkdir -p _build config data docs scripts apps projects examples templates
 	touch .env.template
@@ -121,15 +121,15 @@ uv_download:
 	uv   self update
 	@echo "UV version: $$(uv --version)"
 
-
 install_python:
 	@echo "Installing Python environment with uv..."
 	uv python install $(PYTHON_VERSION)
 	@echo "$(PYTHON_VERSION)" > .python-version
 	$(MAKE) uv_sync_project_name
-	uv sync --all-extras
-	uv pip install --upgrade pip
-	uv run ipython kernel install --user --name=$(PACKAGE_INSTALL_NAME)
+	uv venv $(PYTHON_VENV_DIR) --python $(PYTHON_VERSION) --prompt "$(PYTHON_VENV_KERNEL_NAME)"
+	source $(PYTHON_VENV_DIR)/bin/activate && uv sync --all-extras --active
+	uv pip install --upgrade pip ipython ipykernel
+	uv run python -m ipykernel install --user --name=$(PYTHON_VENV_KERNEL_NAME)
 	@echo "UV version: $$(uv --version)"
 
 uv_sync_project_name:

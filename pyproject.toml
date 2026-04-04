@@ -1,5 +1,5 @@
 [project]
-name = "velari-github-workflows"
+name            = "velari-github-workflows"
 authors         = [{name = "Ari Kamlani", email = "akamlani@gmail.com"}]
 description     = "Add your description here"
 version         = "0.1.0"
