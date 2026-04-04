@@ -1,0 +1,12 @@
+LICENSE
+README.md
+pyproject.toml
+tests/test_hydra_config.py
+tests/test_velari.py
+velari/__init__.py
+velari/version.py
+velari_github_workflows.egg-info/PKG-INFO
+velari_github_workflows.egg-info/SOURCES.txt
+velari_github_workflows.egg-info/dependency_links.txt
+velari_github_workflows.egg-info/requires.txt
+velari_github_workflows.egg-info/top_level.txt
