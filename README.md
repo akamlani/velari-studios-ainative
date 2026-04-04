@@ -15,6 +15,9 @@ Github Action Workflows — a tutorial repository demonstrating GitHub Actions w
 | [basic-workflow.yml](.github/workflows/basic-workflow.yml) | Manual | Multi-job workflow with JS action, env variable scoping |
 | [python-workflow.yml](.github/workflows/python-workflow.yml) | Push/PR/Manual | Python CI with uv package manager and caching |
 | [shell-workflow.yml](.github/workflows/shell-workflow.yml) | Manual | First workflow — self-hosted and Ubuntu runners |
+| [claude.yml](.github/workflows/claude.yml) | Issue/PR comments, Issues | Claude AI agent integration via `@claude` mentions |
+| [claude-code-review.yml](.github/workflows/claude-code-review.yml) | Pull Request | Automated code review on PRs using Claude |
+| [daily-repo-status.lock.yml](.github/workflows/daily-repo-status.lock.yml) | Schedule (daily) | Daily repo status report generated as a GitHub issue |
 
 ## Directory Structure
 
@@ -27,6 +30,10 @@ github-workflows/
 │   ├── copilot-instructions.md       # Copilot style guide references
 │   └── workflows/
 │       ├── basic-workflow.yml        # Advanced workflow with JS action
+│       ├── claude.yml                # Claude AI agent integration
+│       ├── claude-code-review.yml    # Automated PR code review via Claude
+│       ├── daily-repo-status.lock.yml # Daily repo status report (compiled)
+│       ├── daily-repo-status.md      # Daily repo status source (gh-aw)
 │       ├── python-workflow.yml       # Python CI with uv
 │       └── shell-workflow.yml        # First workflow (shell runners)
 ├── .vscode/                          # VS Code settings (symlinked from dotfiles)
