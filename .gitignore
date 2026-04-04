@@ -12,6 +12,10 @@ stores/
 .env
 # Python Virtual Environments
 .venv/
+# Build artifacts
+*.egg-info/
+dist/
+build/
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[codz]
