@@ -10,13 +10,17 @@ AI agent context for the `github-workflows` repository.
 
 ## Purpose
 
-Tutorial repository demonstrating GitHub Actions workflows — covering shell runners, Python CI with uv, and multi-job workflows with environment variable scoping and JS actions.
+Tutorial repository demonstrating GitHub Actions workflows — covering shell runners, Python CI with uv, multi-job workflows with environment variable scoping, JS actions, and Claude AI agent integration.
 
 ## Key Files
 
 | Path | Description |
 |---|---|
 | `.github/workflows/` | GitHub Actions workflow definitions |
+| `.github/workflows/claude.yml` | Claude AI agent triggered by `@claude` mentions |
+| `.github/workflows/claude-code-review.yml` | Automated PR code review using Claude |
+| `.github/workflows/daily-repo-status.lock.yml` | Compiled daily repo status workflow (gh-aw) |
+| `.github/workflows/daily-repo-status.md` | Source definition for daily repo status (gh-aw) |
 | `Makefile` | Primary automation: install, python, agents, dotfiles |
 | `config/runtime/runtime.env` | Package name, repo URLs, branch config |
 | `config/runtime/python.env` | Python version and venv config |
@@ -37,3 +41,5 @@ Tutorial repository demonstrating GitHub Actions workflows — covering shell ru
 - `_build/` contains externally cloned repos (`dotfiles`, `agent-skills`) — not tracked by git
 - `.vscode/` and `.github/copilot-instructions.md` are symlinked from `_build/dotfiles/`
 - Agent skills live in `_build/agent-skills/toolkit/`
+- `daily-repo-status.lock.yml` is compiled from `daily-repo-status.md` using `gh aw compile` — do not edit directly
+- Claude workflows require `ANTHROPIC_API_KEY` secret set in the repository
