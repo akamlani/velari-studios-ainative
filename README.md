@@ -1,4 +1,4 @@
-# github-workflows
+# velari-studios-ainative
 
 Github Action Workflows — a tutorial repository demonstrating GitHub Actions with Python CI, shell automation, and AI agent integration.
 
@@ -22,7 +22,7 @@ Github Action Workflows — a tutorial repository demonstrating GitHub Actions w
 ## Directory Structure
 
 ```
-github-workflows/
+velari-studios-ainative/
 ├── .agents/                          # Agent runtime directory
 ├── .claude/                          # Claude Code configuration
 │   └── settings.json                 # Plugin settings

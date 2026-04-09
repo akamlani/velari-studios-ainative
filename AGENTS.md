@@ -1,6 +1,6 @@
 # AGENTS.md
 
-AI agent context for the `github-workflows` repository.
+AI agent context for the `velari-studios-ainative` repository.
 
 ## Project
 
