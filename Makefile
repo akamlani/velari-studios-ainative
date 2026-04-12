@@ -121,6 +121,15 @@ uv_download:
 	uv   self update
 	@echo "UV version: $$(uv --version)"
 
+# not currently used
+# uv_init:
+# 	@echo "Initializing UV for project $(PACKAGE_INSTALL_NAME)..."
+# 	@echo "$(PYTHON_VERSION)" > .python-version
+# 	@if [ ! -f pyproject.toml ]; then uv init; fi
+# 	@uv python install $(PYTHON_VERSION)
+# 	@if [ ! -d "$(PYTHON_VENV_DIR)" ]; then uv venv "$(PYTHON_VENV_DIR)" --python $(PYTHON_VERSION); fi
+# 	@rm -f main.py
+
 install_python:
 	@echo "Installing Python environment with uv..."
 	uv python install $(PYTHON_VERSION)
@@ -201,10 +210,10 @@ setup_agent_claude:
 	touch .claude/settings.local.json
 
 #################### Development CLIs
-.PHONY: install_cli
+.PHONY: install_github_cli
 
-install_cli:
-	@echo "Installing CLIs for Development..."
+install_github_cli:
+	@echo "Installing GitHub CLIs for Development..."
 # gitub copilot
 	npm install -g @github/copilot
 	copilot update
