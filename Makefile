@@ -210,7 +210,7 @@ setup_agent_claude:
 	touch .claude/settings.local.json
 
 #################### Development CLIs
-.PHONY: install_github_cli
+.PHONY: install_github_cli install_codex_cli install_claude_cli
 
 install_github_cli:
 	@echo "Installing GitHub CLIs for Development..."
@@ -224,6 +224,15 @@ install_github_cli:
 	@echo "Github Agentic Workflow Version: $$(gh aw --version)"
 	gh aw add githubnext/agentics/daily-repo-status
 
+install_claude_cli:
+	@echo "Installing Claude CLI for Development..."
+	curl -fsSL https://claude.ai/install.sh | bash
+	@echo "Claude CLI Version: $$(claude --version)"
+
+install_codex_cli:
+	@echo "Installing OpenAI Codex CLI for Development..."
+	npm install -g @openai/codex
+	@echo "OpenAI Codex CLI Version: $$(codex --version)"
 
 #################### General
 .PHONY: clean
