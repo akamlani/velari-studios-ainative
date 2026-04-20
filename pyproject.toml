@@ -38,7 +38,7 @@ select = ["E", "F", "I"]
 ignore = ["F841", "F401", "E731", "F821", "F722"]
 
 [tool.pytest.ini_options]
-testpaths = ["tests"]
+testpaths = ["tests", "projects"]
 
 [tool.ruff.lint.pydocstyle]
 convention = "google"

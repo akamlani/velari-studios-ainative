@@ -226,6 +226,7 @@ install_github_cli:
 
 install_claude_cli:
 	@echo "Installing Claude CLI for Development..."
+# npm install -g @anthropic-ai/claude-code
 	curl -fsSL https://claude.ai/install.sh | bash
 	@echo "Claude CLI Version: $$(claude --version)"
 
